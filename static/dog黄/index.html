@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dog 黄的七夕小礼物</title>
+    <style>
+        body {
+            background-image: url(https://s1.ax1x.com/2022/08/01/vkqdOO.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 80%;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+
+        .content {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+
+        .flicker {
+            color: #9966FF;
+            /*设置文字颜色*/
+            font-size: 52px;
+            /*设置字体大小*/
+            font-weight: bolder;
+            /*设置字体粗细*/
+            -webkit-animation: flicker 2s infinite;
+            text-align: center;
+            /*设置动画*/
+        }
+
+        @-webkit-keyframes flicker {
+
+            /*创建动画*/
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .heart {
+            width: 280px;
+            height: 220px;
+            display: flex;
+            justify-content: space-between;
+            border: 0px solid red;
+            margin: 0px auto;
+        }
+
+        .heart span {
+            /*自定义属性*/
+            --c: plum;
+            --h: 50%;
+            --t: 25%;
+            /*var()用于插入自定义属性值*/
+            background-color: var(--c);
+            width: 20px;
+            border-radius: 10px;
+            position: relative;
+            height: var(--h);
+            top: var(--t);
+            /*执行动画*/
+            animation: beating 1s infinite;
+        }
+
+        .heart span:nth-child(1),
+        .heart span:nth-child(9) {
+            --c: lightcoral;
+            --h: 60px;
+            --t: 44px;
+        }
+
+        .heart span:nth-child(2),
+        .heart span:nth-child(8) {
+            --c: lightskyblue;
+            --h: 120px;
+            --t: 12px;
+        }
+
+        .heart span:nth-child(3),
+        .heart span:nth-child(7) {
+            --c: lightgreen;
+            --h: 160px;
+            --t: 0;
+        }
+
+        .heart span:nth-child(4),
+        .heart span:nth-child(6) {
+            --c: gold;
+            --h: 180px;
+            --t: 16px;
+        }
+
+        .heart span:nth-child(5) {
+            --c: plum;
+            --h: 188px;
+            --t: 32px;
+        }
+
+        /*定义动画*/
+        @keyframes beating {
+
+            0%,
+            30% {
+                height: var(--h);
+                top: var(--t);
+                background-color: var(--c);
+                filter: blur(0);
+            }
+
+            60%,
+            70% {
+                height: 50%;
+                top: 25%;
+                background-color: plum;
+                filter: blur(5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <p class="flicker" ; style="max-width:700px;
+        margin: 50px auto;
+        padding:15px;
+        ling-heght:1.7;">小宝贝，七夕节快乐!</p>
+        <h2>今天已经和Dog黄在一起</h2>
+        <div class="timer">
+            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+        </div>
+        <div class="heart">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div style="
+    text-align: center;
+    padding: 40px;
+    font-size:12px;">
+            <p>来自你的Dog贤</p>
+            <a href='www.com/'>打不开的链接</a>
+        </div>
+    </div>
+
+    <script>
+        function timer() {
+            var start = new Date(2021, 9, 2); // 2015.7.2
+            var t = new Date() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+                h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+                m = "0" + m;
+            }
+
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+                s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+        }
+        timer();
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
